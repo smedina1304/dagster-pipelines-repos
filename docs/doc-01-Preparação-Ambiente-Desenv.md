@@ -93,9 +93,9 @@ _____
 
 <br>
 
-:point_right: *Importante: A instalação inicial dos pacotes do Dagster será abordada em detalhes no [próximo tópico](..\docs\doc-02-Instalacao-Dagster.md) desta documentação, mesmo que também estejam incluidos no arquivo `requirements.txt`.*
+:point_right: *Importante: A instalação inicial dos pacotes do Dagster será abordada em detalhes no [próximo tópico](../docs/doc-02-Instalacao-Dagster.md) desta documentação, mesmo que também estejam incluidos no arquivo `requirements.txt`.*
 
 <br>
 <br>
 
-[:back: *Voltar ao documento raiz*](..\README.md)
+[:back: *Voltar ao documento raiz*](../README.md)

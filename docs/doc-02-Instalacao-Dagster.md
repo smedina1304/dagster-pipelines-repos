@@ -10,7 +10,7 @@ _____
 ### Instalação do Dagster e Pacotes necessários:
 <br>
 
-:point_right: *Importante: Recomendamos a instalação do Dagster dentro de um virtualenv do Python.  Assim sendo necessário que a instalação do ambiente Python tenha sido realizada previamente, caso contrário, consulte os [tópico anterior](..\docs\doc-01-Preparação-Ambiente-Desenv.md) desta documentação. Se estiver executando o Anaconda, instale o Dagster dentro de um ambiente Conda.*
+:point_right: *Importante: Recomendamos a instalação do Dagster dentro de um virtualenv do Python.  Assim sendo necessário que a instalação do ambiente Python tenha sido realizada previamente, caso contrário, consulte os [tópico anterior](../docs/doc-01-Preparação-Ambiente-Desenv.md) desta documentação. Se estiver executando o Anaconda, instale o Dagster dentro de um ambiente Conda.*
 
 <br>
 
@@ -49,4 +49,4 @@ _____
 <br>
 <br>
 
-[:back: *Voltar ao documento raiz*](..\README.md)
+[:back: *Voltar ao documento raiz*](../README.md)
