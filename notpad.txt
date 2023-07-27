@@ -1,0 +1,7 @@
+Criando o REPO - dag-hackernews-report
+
+dagster project scaffold --name dag-hackernews-report
+
+pip install -e ".[dev]"
+
+Criar o "workspace.yaml"

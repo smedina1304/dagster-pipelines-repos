@@ -17,7 +17,7 @@ Links de referência de documentação:
 _____
 <br>
 
-### Consulte os tópicos abaixo relacionados para detalhamento de cada etapa realizada:
+### Consulte os tópicos abaixo relacionados para preparação do ambiente necessário:
 
 1. Preparação do Ambiente Python (`venv`) e IDE de Desenvolvimento.
    >[docs/doc-01-Preparação-Ambiente-Desenv.md](docs/doc-01-Preparação-Ambiente-Desenv.md)
@@ -25,3 +25,12 @@ _____
 
 2. Instalação do Dagster e Pacotes necessários.
    >[docs/doc-02-Instalacao-Dagster.md](docs/doc-02-Instalacao-Dagster.md)
+
+<br>
+
+👉 Atenção: Para mais esclarecimentos para inicialização e utilização do _Dagster_ utilize os links de referência no topo desta página.
+
+<br>
+
+_____
+<br>
