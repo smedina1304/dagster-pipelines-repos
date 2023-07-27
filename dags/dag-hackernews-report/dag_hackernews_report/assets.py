@@ -4,6 +4,9 @@ import base64
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+import urllib.request
+import zipfile
+import csv
 
 from io import BytesIO
 from dagster import (
@@ -14,6 +17,9 @@ from dagster import (
 )
 
 dir_base = 'data/dags/hackernews'
+
+
+## Top Stories - Data Collect
 
 @asset(group_name="hackernews")
 def topstory_ids() -> None:
@@ -63,14 +69,48 @@ def topstories(context: AssetExecutionContext) -> None:
         }
     )
 
+## Stopwords - Zip file
 
+@asset(group_name="hackernews")
+def stopwords_zip() -> None:
+    """
+    Download stopword zip file.
 
-@asset(deps=[topstories], group_name="hackernews")
+    URL: https://docs.dagster.io/assets/stopwords.zip
+    """
+    urllib.request.urlretrieve(
+        'https://docs.dagster.io/assets/stopwords.zip',
+        f'{dir_base}/stopwords.zip',
+    )
+
+@asset(non_argument_deps={"stopwords_zip"},group_name="hackernews")
+def stopwords_csv() -> None:
+    """
+    Unzip file 'stopwords.zip'
+    """
+    with zipfile.ZipFile(f'{dir_base}/stopwords.zip', "r") as zip:
+        zip.extract('stopwords.csv',f'{dir_base}')    
+
+## Top Stories - Text Analysis
+
+@asset(
+        deps=[topstories, stopwords_csv],
+        group_name="hackernews"
+)
 def most_frequent_words(context: AssetExecutionContext) -> None:
     """
     Incorporates a bar chart of the most frequently used words as metadata.
     """    
-    stopwords = ["a", "the", "an", "of", "to", "in", "for", "and", "with", "on", "is"]
+    local_stopwords = {"ai", "the", "an", "of", "to", "in", 
+                       "for", "and", "with", "on", "is", "yc",
+                       "s23", "x", "far", "this", "than"}
+
+    with open(f'{dir_base}/stopwords.csv', 'r') as f:
+        stopwords = {row[0] for row in csv.reader(f)}
+
+    num_stopwords = len(stopwords)
+
+    stopwords = stopwords.union(local_stopwords)
 
     topstories = pd.read_csv(f"{dir_base}/topstories.csv")
 
@@ -108,4 +148,12 @@ def most_frequent_words(context: AssetExecutionContext) -> None:
         json.dump(top_words, f)
 
     # Attach the Markdown content as metadata to the asset
-    context.add_output_metadata(metadata={"plot": MetadataValue.md(md_content)})
+    context.add_output_metadata(
+        metadata={
+            "dload_stopwords": num_stopwords,
+            "local_stopwords": len(local_stopwords),
+            "total_stopwords": len(stopwords),
+            "stopwords" : str(stopwords),
+            "plot": MetadataValue.md(md_content),
+        }
+    )
