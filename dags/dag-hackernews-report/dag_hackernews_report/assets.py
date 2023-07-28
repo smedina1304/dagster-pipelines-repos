@@ -8,10 +8,12 @@ import urllib.request
 import zipfile
 import csv
 
+from urllib.parse import urlparse
 from io import BytesIO
 from dagster import (
     AssetExecutionContext,
     MetadataValue,
+    AssetIn,
     asset,
     get_dagster_logger,
 )
@@ -91,13 +93,13 @@ def stopwords_csv() -> None:
     with zipfile.ZipFile(f'{dir_base}/stopwords.zip', "r") as zip:
         zip.extract('stopwords.csv',f'{dir_base}')    
 
-## Top Stories - Text Analysis
+## Top Stories - Word Counts
 
 @asset(
         deps=[topstories, stopwords_csv],
         group_name="hackernews"
 )
-def most_frequent_words(context: AssetExecutionContext) -> None:
+def most_frequent_words(context: AssetExecutionContext) -> pd.DataFrame:
     """
     Incorporates a bar chart of the most frequently used words as metadata.
     """    
@@ -154,6 +156,77 @@ def most_frequent_words(context: AssetExecutionContext) -> None:
             "local_stopwords": len(local_stopwords),
             "total_stopwords": len(stopwords),
             "stopwords" : str(stopwords),
+            "plot": MetadataValue.md(md_content),
+        }
+    )
+
+    return topstories[['by','url','descendants','score']]
+
+## Top Stories - Top 10 Publishers
+
+@asset(
+        ins={"topstories": AssetIn("most_frequent_words")},
+        group_name="hackernews"
+)
+def top_publishers(context: AssetExecutionContext, topstories: pd.DataFrame) -> None:
+
+    grp = topstories.groupby(['by'])['by'].count().reset_index(name='counts')
+    top10=grp.sort_values('counts', ascending=False)[:10]
+    ticks = [*range(0,top10['counts'].max()+2)]
+
+    # Make a bar chart
+    plt.figure(figsize=(10, 6))
+    plt.barh(top10['by'], top10['counts'])
+    plt.xticks(ticks=ticks)
+    plt.title("Top 10 - Publishers")
+    plt.tight_layout()
+
+    # Convert the image to a saveable format
+    buffer = BytesIO()
+    plt.savefig(buffer, format="png")
+    image_data = base64.b64encode(buffer.getvalue())
+
+    # Convert the image to Markdown to preview it within Dagster
+    md_content = f"![img](data:image/png;base64,{image_data.decode()})"
+
+    # Attach the Markdown content as metadata to the asset
+    context.add_output_metadata(
+        metadata={
+            "plot": MetadataValue.md(md_content),
+        }
+    )
+
+## Top Stories - Top 10 Publishers
+
+@asset(
+        ins={"topstories": AssetIn("most_frequent_words")},
+        group_name="hackernews"
+)
+def top_scores(context: AssetExecutionContext, topstories: pd.DataFrame) -> None:
+
+    top10 = topstories[['url','score']].sort_values('score', ascending=False).copy()[0:10]
+    top10['url'] = top10['url'].apply(lambda x: urlparse(x).netloc)
+
+    ticks = [*range(0,top10['score'].max()+200,250)]
+
+    # Make a bar chart
+    plt.figure(figsize=(10, 6))
+    plt.barh(top10['url'], top10['score'])
+    plt.xticks(ticks=ticks)
+    plt.title("Top 10 - Score")
+    plt.tight_layout()
+
+    # Convert the image to a saveable format
+    buffer = BytesIO()
+    plt.savefig(buffer, format="png")
+    image_data = base64.b64encode(buffer.getvalue())
+
+    # Convert the image to Markdown to preview it within Dagster
+    md_content = f"![img](data:image/png;base64,{image_data.decode()})"
+
+    # Attach the Markdown content as metadata to the asset
+    context.add_output_metadata(
+        metadata={
             "plot": MetadataValue.md(md_content),
         }
     )
