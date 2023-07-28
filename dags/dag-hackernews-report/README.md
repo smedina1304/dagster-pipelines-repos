@@ -75,3 +75,7 @@ pytest dag_hackernews_report_tests
 
 Confira a documentação do ["Dagster Cloud"](https://docs.dagster.cloud) para saber mais.
 
+_____
+
+
+[:back: *Voltar ao documento raiz*](../README.md)

@@ -19,13 +19,15 @@ _____
 
 ### Consulte os tópicos abaixo relacionados para preparação do ambiente necessário:
 
-1. Preparação do Ambiente Python e um *virtual environment*(`venv`), como a indicação de um IDE de Desenvolvimento.
+1. Preparação do Ambiente Python e um *virtual environment* (`venv`), como a indicação de um IDE de Desenvolvimento.
    >[docs/doc-01-Preparação-Ambiente-Desenv.md](docs/doc-01-Preparação-Ambiente-Desenv.md)
 
 
 2. Instalação do Dagster e Pacotes necessários.
    >[docs/doc-02-Instalacao-Dagster.md](docs/doc-02-Instalacao-Dagster.md)
 
+3. DAGS - Repositório de projetos - _Pipeline de dados_.
+   3.1. [dags/dag-hackernews-report](dags/dag-hackernews-report/README.md)
 <br>
 
 👉 Atenção: Para mais esclarecimentos para inicialização e utilização do _Dagster_ utilize os links de referência no topo desta página.
