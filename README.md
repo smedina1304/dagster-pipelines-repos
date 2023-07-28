@@ -27,7 +27,8 @@ _____
    >[docs/doc-02-Instalacao-Dagster.md](docs/doc-02-Instalacao-Dagster.md)
 
 3. DAGS - Repositório de projetos - _Pipeline de dados_.
-   3.1. [dags/dag-hackernews-report](dags/dag-hackernews-report/README.md)
+   >- [dags/dag-hackernews-report](dags/dag-hackernews-report/README.md)
+
 <br>
 
 👉 Atenção: Para mais esclarecimentos para inicialização e utilização do _Dagster_ utilize os links de referência no topo desta página.
