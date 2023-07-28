@@ -78,4 +78,4 @@ Confira a documentação do ["Dagster Cloud"](https://docs.dagster.cloud) para s
 _____
 
 
-[:back: *Voltar ao documento raiz*](../README.md)
+[:back: *Voltar ao documento raiz*](/README.md)
