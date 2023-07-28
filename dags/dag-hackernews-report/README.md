@@ -1,48 +1,77 @@
+<p align="center">
+   <img src="https://dagster.io/images/brand/logos/dagster-primary-horizontal.png" width="200" style="max-width: 200px;">
+</p>
+
+_____
+
 # dag_hackernews_report
 
-This is a [Dagster](https://dagster.io/) project scaffolded with [`dagster project scaffold`](https://docs.dagster.io/getting-started/create-new-project).
+Neste projeto de exemplo, está sendo coletado e sumarizado o conteúdo das últimas postagens realizadas em um site popular de notícias chamado [Hacker News](https://news.ycombinator.com/), o site apresenta histórias enviadas por usuários sobre tecnologia, startups e outras fontes da Internet. Onde estes dados serão apresentados em metadados dos _"assets"_, como *Strings*, *Listas*, *DataFrames* e *Gráficos* informativos.
 
-## Getting started
+Este é um modelo de projeto padrão do [Dagster](https://dagster.io/) gerado automaticamente pelo comando [*"dagster project scaffold"*](https://docs.dagster.io/getting-started/create-new-project), que pode ser consultado na documentação oficial.
 
-First, install your Dagster code location as a Python package. By using the --editable flag, pip will install your Python package in ["editable mode"](https://pip.pypa.io/en/latest/topics/local-project-installs/#editable-installs) so that as you develop, local code changes will automatically apply.
 
-```bash
+## Resumo do processo de criação do projeto
+
+Primeiro, conclua os tópicos de instalação e preparação do ambiente Python com os paciotes do Dagster listados no [*README.md*](../README.md) documento na raiz do projeto.
+
+Seguindo, comando de criação do projeto na pasta _DAGS_:
+
+```shell
+dagster project scaffold --name dag-hackernews-report
+```
+
+Depois de executar a criação, deve haver um novo diretório chamado _`dag-hackernews-report`_ em seu diretório atual. Este diretório contém os arquivos que compõem seu projeto Dagster seguindo o padrão de projeto _`scaffold`_. Em seguida, é necessário instalar as dependências do Python que usará durante o uso do projeto.
+
+```shell
+cd dag-hackernews-report
 pip install -e ".[dev]"
 ```
 
-Then, start the Dagster UI web server:
+Em seguida, os dados de localização do módulo devem ser incluidos no arquivo _`workspace.yaml`_ na pasta raiz, onde o Dagster deverá ser executado nesta estrutura de multiplos projetos.
 
-```bash
+```yaml
+load_from:
+  - python_module:
+      module_name: dag_hackernews_report
+      working_directory: dags/dag-hackernews-report
+```
+
+👉 Atenção: Observe uma pequena diferença nos parametros _`module_name`_ e _`working_directory`_, onde no comando de criação do projeto padrão _scaffold_ o nome foi informado com o _hìfen_ (_`-`_) "_`dag-hackernews-report`_", porem para o módulo gerado pelo comando do Dagster mudou para _underscore_ (_`_`_). Esta pequena diferença pode impossibilitar a execução do projeto.
+
+
+Para verificar se funcionou o que foi realizado até o momento pode executar o Dagster localmente, com o seguinte comando na pasta raiz do projeto onde está localizado o arquivo _`workspace.yaml`_.
+
+```shell
 dagster dev
 ```
 
-Open http://localhost:3000 with your browser to see the project.
+Navegue para URL http://localhost:3000 para ver a interface do usuário (_IU_) do Dagster. Este comando executará o Dagster até que você esteja pronto para pará-lo. Para interromper o processo de longa duração, pressione Control+C no terminal em que o processo está sendo executado.
 
-You can start writing assets in `dag_hackernews_report/assets.py`. The assets are automatically loaded into the Dagster code location as you define them.
+Com isso e tudo rodando bem, a é possível iniciar a escrever os _"assets"_, _"jobs"_ e _"schedulers"_, que podem ser localizados neste projetos em dois arquivos apenas:
+    - `dag_hackernews_report/assets.py`
+    - `dag_hackernews_report/__init__.py`
 
-## Development
 
+## Desenvolvimento
 
-### Adding new Python dependencies
+Para um melhor entendimento, utilize a referência do [tutorial](https://docs.dagster.io/tutorial/introduction) na página oficial do Dagster. Propositalmente este exemplo foi baseado neste tutorial para utilizar de todo conteúdo explicativo dado pelo produto.
 
-You can specify new Python dependencies in `setup.py`.
+### Adicionando novas dependências do Python
 
-### Unit testing
+Pode-se especificar novas dependências do Python em `setup.py`, sendo necessário para alterações ou testes desejados com base neste projeto.
 
-Tests are in the `dag_hackernews_report_tests` directory and you can run tests using `pytest`:
+### Testes unitários
+
+Testes automatizados podem ser codificados na pasta `dag_hackernews_report_tests`, podendo executá-los usando `pytest`:
 
 ```bash
 pytest dag_hackernews_report_tests
 ```
 
-### Schedules and sensors
+👉 Atenção: esta funcionalidade não foi aplicada neste projeto.
 
-If you want to enable Dagster [Schedules](https://docs.dagster.io/concepts/partitions-schedules-sensors/schedules) or [Sensors](https://docs.dagster.io/concepts/partitions-schedules-sensors/sensors) for your jobs, the [Dagster Daemon](https://docs.dagster.io/deployment/dagster-daemon) process must be running. This is done automatically when you run `dagster dev`.
+## Implantação no Dagster Cloud
 
-Once your Dagster Daemon is running, you can start turning on schedules and sensors for your jobs.
+Confira a documentação do ["Dagster Cloud"](https://docs.dagster.cloud) para saber mais.
 
-## Deploy on Dagster Cloud
-
-The easiest way to deploy your Dagster project is to use Dagster Cloud.
-
-Check out the [Dagster Cloud Documentation](https://docs.dagster.cloud) to learn more.
