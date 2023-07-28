@@ -15,11 +15,11 @@ Links de referência de documentação:
 - https://github.com/dagster-io/dagster/tree/master
 
 _____
-<br>
+
 
 ### Consulte os tópicos abaixo relacionados para preparação do ambiente necessário:
 
-1. Preparação do Ambiente Python (`venv`) e IDE de Desenvolvimento.
+1. Preparação do Ambiente Python e um *virtual environment*(`venv`), como a indicação de um IDE de Desenvolvimento.
    >[docs/doc-01-Preparação-Ambiente-Desenv.md](docs/doc-01-Preparação-Ambiente-Desenv.md)
 
 
@@ -30,7 +30,6 @@ _____
 
 👉 Atenção: Para mais esclarecimentos para inicialização e utilização do _Dagster_ utilize os links de referência no topo desta página.
 
-<br>
 
 _____
 <br>
