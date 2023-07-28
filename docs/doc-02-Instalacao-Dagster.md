@@ -63,7 +63,8 @@ _____
     ```shell
     pip freeze > requirements.txt
     ```
-<br>
-<br>
+
+_____
+
 
 [:back: *Voltar ao documento raiz*](../README.md)
