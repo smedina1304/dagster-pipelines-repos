@@ -28,6 +28,7 @@ _____
 
 3. DAGS - Repositório de projetos - _Pipeline de dados_.
    >- [dags/dag-hackernews-report](dags/dag-hackernews-report/README.md)
+   >- [dags/dag-stargazers-analysis](dags/dag-stargazers-analysis/README.md)
 
 <br>
 

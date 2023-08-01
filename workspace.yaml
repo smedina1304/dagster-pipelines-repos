@@ -2,3 +2,6 @@ load_from:
   - python_module:
       module_name: dag_hackernews_report
       working_directory: dags/dag-hackernews-report
+  - python_module:
+      module_name: dag_stargazers_analysis
+      working_directory: dags/dag-stargazers-analysis
