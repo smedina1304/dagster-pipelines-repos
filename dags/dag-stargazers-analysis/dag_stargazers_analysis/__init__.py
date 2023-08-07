@@ -1,3 +1,6 @@
+import os
+from github import Github
+
 from dagster import (
     AssetSelection,
     Definitions,
@@ -16,12 +19,14 @@ stargazers_job = define_asset_job(
     name="stargazers_job", 
     #selection=AssetSelection.all(),
     config=RunConfig(
-        {"get_gitrepos_list": 
+        {"get_github_repos": 
          assets.MyAssetConfig(
-            git_repos=[
+            github_repos=[
                     "dagster-io/dagster",
                     "apache/airflow",
-                    "PrefectHQ/prefect"
+                    "PrefectHQ/prefect",
+                    "mage-ai/mage-ai",
+                    "kestra-io/kestra"
                 ]
             )
         }
@@ -36,5 +41,6 @@ stargazers_schedule = ScheduleDefinition(
 
 defs = Definitions(
     assets=all_assets,
-    schedules=[stargazers_schedule]
+    schedules=[stargazers_schedule],
+    resources={"github_api": Github(os.environ["GITHUB_ACCESS_TOKEN"])}
 )

@@ -5,6 +5,7 @@ setup(
     packages=find_packages(exclude=["dag_stargazers_analysis_tests"]),
     install_requires=[
         "dagster",
+        "PyGithub",
         "dagster-cloud"
     ],
     extras_require={"dev": ["dagster-webserver", "pytest"]},
