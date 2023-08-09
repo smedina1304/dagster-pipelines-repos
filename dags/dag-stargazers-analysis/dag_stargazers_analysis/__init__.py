@@ -19,7 +19,7 @@ stargazers_job = define_asset_job(
     name="stargazers_job", 
     #selection=AssetSelection.all(),
     config=RunConfig(
-        {"get_github_repos": 
+        {"get_github_stargazers": 
          assets.MyAssetConfig(
             github_repos=[
                     "dagster-io/dagster",
