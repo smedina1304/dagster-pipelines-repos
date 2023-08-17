@@ -2,7 +2,7 @@
 
 Neste projeto de exemplo, está sendo coletado e sumarizado o conteúdo registrado no Github das últimas pessoas que marcaram com estrela uma lista de repositórios selecionados do Github. Onde estes dados serão apresentados em metadados dos _"assets"_, como *Strings*, *Listas*, *DataFrames* e *Gráficos* informativos.
 
-Este é um modelo de projeto utilizar a API _github_ para Python e foi baseado no conteúdo apresentado no blog do _Dagster_ [_"A Dagster Crash Course" by Pete Hunt_](https://dagster.io/blog/dagster-crash-course-oct-2022), como o projeto anterior [Hacker News - dag_hackernews_report](../dag-hackernews-report/README.md) este também foi iniciado  automaticamente pelo comando [*"dagster project scaffold"*](https://docs.dagster.io/getting-started/create-new-project), que pode ser consultado na documentação oficial.
+Este é um modelo de projeto que utiliza a _API Github_ para Python e foi baseado no conteúdo apresentado no blog do _Dagster_ [_"A Dagster Crash Course" by Pete Hunt_](https://dagster.io/blog/dagster-crash-course-oct-2022). Como o projeto anterior [Hacker News - dag_hackernews_report](../dag-hackernews-report/README.md), este também foi iniciado  automaticamente pelo comando [*"dagster project scaffold"*](https://docs.dagster.io/getting-started/create-new-project), que pode ser consultado na documentação oficial.
 
 
 ## Resumo do processo de criação do projeto
