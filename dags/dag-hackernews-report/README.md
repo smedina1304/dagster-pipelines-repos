@@ -6,7 +6,7 @@ _____
 
 # dag_hackernews_report
 
-Neste projeto de exemplo, está sendo coletado e sumarizado o conteúdo das últimas postagens realizadas em um site popular de notícias chamado [Hacker News](https://news.ycombinator.com/), o site apresenta histórias enviadas por usuários sobre tecnologia, startups e outras fontes da Internet. Onde estes dados serão apresentados em metadados dos _"assets"_, como *Strings*, *Listas*, *DataFrames* e *Gráficos* informativos.
+Neste projeto de exemplo, está sendo coletado e sumarizado o conteúdo das últimas postagens realizadas em um site de notícias chamado [Hacker News](https://news.ycombinator.com/), o site apresenta histórias enviadas por usuários sobre tecnologia, startups e outras fontes da Internet. Os dados coletados do site serão apresentados em metadados dos _"assets"_, como *Strings*, *Listas*, *DataFrames* e *Gráficos* informativos.
 
 Este é um modelo de projeto padrão do [Dagster](https://dagster.io/) gerado automaticamente pelo comando [*"dagster project scaffold"*](https://docs.dagster.io/getting-started/create-new-project), que pode ser consultado na documentação oficial.
 
