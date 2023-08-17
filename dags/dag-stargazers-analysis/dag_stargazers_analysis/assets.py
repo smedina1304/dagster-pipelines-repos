@@ -199,8 +199,6 @@ def graph_analytic_hist(context: AssetExecutionContext, data_config: MyAssetConf
     # Adicionando o conteúdo Markdown como metadados ao ativo
     context.add_output_metadata(
         metadata={
-            "total_repos": len(data_config.github_repos),
-            "total_users": df_week.shape[0],
             "graph_hist": MetadataValue.md(md_graph_hist),            
             "graph_after_2022": MetadataValue.md(md_graph_2022),
         }
@@ -263,6 +261,8 @@ def graph_analytic_totals(context: AssetExecutionContext, data_config: MyAssetCo
     # Adicionando o conteúdo Markdown como metadados ao ativo
     context.add_output_metadata(
         metadata={
+            "total_repos": len(data_config.github_repos),
+            "total_users": int(df_total['users'].sum()),            
             "table_total": MetadataValue.md(df_total[['repo', 'users']].to_markdown()),
             "graph_total": MetadataValue.md(md_graph_line),            
             "graph_ranking": MetadataValue.md(md_graph_bar),
@@ -270,7 +270,6 @@ def graph_analytic_totals(context: AssetExecutionContext, data_config: MyAssetCo
     )
 
     logger.info(f">> Gráfico gerado com sucesso.")
-
 
 
 @asset(
@@ -314,3 +313,4 @@ def graph_analytic_year(context: AssetExecutionContext, data_config: MyAssetConf
     )
 
     logger.info(f">> Gráfico gerado com sucesso.")
+
