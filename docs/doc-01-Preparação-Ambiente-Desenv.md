@@ -80,6 +80,12 @@ _____
     Passo opcional para atualização do `pip` no ambiente **`venv`**:
 
     ```shell
+    python -m pip install --upgrade pip
+    ```
+    
+    ou utilizando o próprio `pip` para atualizar.
+
+    ```shell
     pip install --upgrade pip
     ```
     <br>
