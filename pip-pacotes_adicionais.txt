@@ -1,0 +1,3 @@
+# Pacotes adicionais
+pip install PyGithub seaborn
+pip install Office365-REST-Python-Client
