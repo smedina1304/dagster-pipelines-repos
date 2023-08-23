@@ -5,3 +5,6 @@ load_from:
   - python_module:
       module_name: dag_stargazers_analysis
       working_directory: dags/dag-stargazers-analysis
+  - python_module:
+      module_name: dag_storage_temperature_load
+      working_directory: dags/dag-storage-temperature-load
