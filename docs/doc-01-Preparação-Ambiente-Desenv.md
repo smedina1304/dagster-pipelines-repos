@@ -95,11 +95,28 @@ _____
     ```shell
     pip install -r requirements.txt
     ```
+
+    <br> 
+
+    Como ponto adicional e opcional seguem os pacotes utilizados especificamente para cada _`pipeline (DAG)`_ conforme abaixo.
+
     <br>
 
-<br>
+   - [dags/dag-hackernews-report](dags/dag-hackernews-report/README.md)
 
-:point_right: *Importante: A instalação inicial dos pacotes do Dagster será abordada em detalhes no [próximo tópico](../docs/doc-02-Instalacao-Dagster.md) desta documentação, mesmo que também estejam incluidos no arquivo `requirements.txt`.*
+    ```shell
+    pip install PyGithub seaborn
+    ```
+    <br>
+
+   - [dags/dag-stargazers-analysis](dags/dag-stargazers-analysis/README.md)
+
+    ```shell
+    pip install Office365-REST-Python-Client
+    ```
+    <br>
+
+    :point_right: *Importante: A instalação inicial dos pacotes do Dagster será abordada em detalhes no [próximo tópico](../docs/doc-02-Instalacao-Dagster.md) desta documentação, mesmo que também estejam incluidos no arquivo `requirements.txt`. Esta observação também é válida para os pacotes utilizados especificamente para da cenário (DAG).*
 
 _____
 

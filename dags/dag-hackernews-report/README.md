@@ -52,6 +52,11 @@ Com isso e tudo rodando bem, a é possível iniciar a escrever os _"assets"_, _"
     - `dag_hackernews_report/assets.py`
     - `dag_hackernews_report/__init__.py`
 
+Como requisito para atender os pacotes utilizados nesta _DAG_, segue a instrução de intalação:
+
+```shell
+pip install Office365-REST-Python-Client
+```
 
 ## Desenvolvimento
 

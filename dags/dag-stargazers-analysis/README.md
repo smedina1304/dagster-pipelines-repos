@@ -49,6 +49,11 @@ Com isso observe o conteú programado os _"assets"_, _"jobs"_ e _"schedulers"_, 
     - `dag_stargazers_analysis/assets.py`
     - `dag_stargazers_analysis/__init__.py`
 
+Como requisito para atender os pacotes utilizados nesta _DAG_, segue a instrução de intalação:
+
+```shell
+pip install PyGithub seaborn
+```
 
 ## Desenvolvimento
 
